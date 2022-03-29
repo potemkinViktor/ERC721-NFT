@@ -63,25 +63,6 @@ contract saleERC721 is Ownable, ERC721Enumerable {
                 payable(msg.sender).transfer(msg.value-(costPresale*_mintAmount));
             }
         } 
-<<<<<<< HEAD
-    }
-
-    function airdrop(address[] memory _users) public onlyOwner {
-    require(_users.length == 100, "Only 100 users");
-    uint256 supply = totalSupply();
-      for (uint256 i = 0; i < _users.length; i++) {
-        addressMintedBalance[_users[i]]++;
-        _safeMint(_users[i], supply + i);
-      }
-  }
- 
-  function withdraw(address to, uint256 amount) public onlyOwner {
-        require(to != address(0), "Wrong address");
-        payable(to).transfer(amount);
-
-        emit Withdraw(to, amount);
-=======
->>>>>>> 4b2e8c668e8c54eafdd993cb5c10b21dbcf31d7a
     }
 
     function airdrop(address[] memory _users) public onlyOwner {
