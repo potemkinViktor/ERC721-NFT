@@ -33,7 +33,7 @@ contract saleERC721 is Ownable, ERC721Enumerable {
             comission(costPresale, _mintAmount);
 
         } else {
-            mintAmount(_mintAmount, maxSupplyPresale, maxMintAmountPresale);
+            mintAmount(_mintAmount, maxSupply, maxMintAmountPublic);
             comission(costPublic, _mintAmount);
         } 
     }
@@ -43,7 +43,7 @@ contract saleERC721 is Ownable, ERC721Enumerable {
         require(addressMintedBalance[msg.sender] + _mintAmount < _maxMintAmount, "Limit of presale NFT for one address is over");
         uint256 supply = totalSupply();
         require(supply + _mintAmount < _maxSupply, "Limit of presale NFT is over or try to mint less");
-        
+
         for(uint256 i=1; i<= _mintAmount; i++) {
                 addressMintedBalance[msg.sender]++;
                 _safeMint(msg.sender, supply+i);
