@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
@@ -19,5 +20,8 @@ module.exports = {
       url: INFURA_URL,
       accounts: [`0x${PRIVATE_KEY}`]
     }
+  },
+  etherscan: {
+    apiKey: "PY19J8WKW7717MZMKU4UXDZSPUH5S9HI9F"
   }
 };
