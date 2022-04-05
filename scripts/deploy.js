@@ -1,17 +1,16 @@
-const { ethers } = require("hardhat");
+const hre = require("hardhat");
 
 async function main() {
-    const [deployer] = await ethers.getSigners();
-    console.log(`Deploying contract with the account: ${deployer.address}`);
+  const SaleERC721 = await ethers.getContractFactory("saleERC721");
+  const sale = await SaleERC721.deploy("saleERC721", "SaleERC721");//в скобки вписываем значения конструктора
+  await sale.deployed();// доп логика
 
-    const NFT = await ethers.getContractFactory('NFTsale');
-    const nft = await NFT.deploy("saleERC721", "NFT");
-    console.log(`saleERC721 address: ${nft.address}`);
+  console.log("saleERC721 deployed to:", sale.address);//выводит в консоль название контракта и адресс контракта который задеплоили
 }
 
-main()
-    .then(() => process.exit(0))
-    .catch((error) => {
-        console.error(error);
-        process.exit(1);
-    });
+main()// просто запускаем async function 
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
